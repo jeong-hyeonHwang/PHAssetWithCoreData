@@ -13,24 +13,28 @@ import CoreVideo
 
 class PHAssetTypeViewController: UIViewController {
     
+    // PHPicker를 나타내기 위한 버튼
     lazy var popPickerButton: UIButton = {
         let button = UIButton()
         button.setTitle("POP PHPICKER", for: .normal)
         return button
     }()
     
+    // CoreData의 영상 데이터(첫번째 Index)를 호출하는 메소드
     lazy var playVideoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Play Video Butotn", for: .normal)
         return button
     }()
     
+    // CoreData에 데이터를 저장하는 버튼
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Video Save", for: .normal)
         return button
     }()
     
+    // CoreData에서 데이터를 삭제하는 버튼
     lazy var removeAllButton: UIButton = {
        let button = UIButton()
         button.setTitle("Remove All Video", for: .normal)
@@ -93,6 +97,7 @@ class PHAssetTypeViewController: UIViewController {
         removeAllButton.addTarget(self, action: #selector(removeAllData), for: .touchUpInside)
     }
     
+    // PHPicker를 나타내기 위한 메소드
     @objc func showPhotoPicker() {
         
         let photoLibrary = PHPhotoLibrary.shared()
@@ -105,6 +110,7 @@ class PHAssetTypeViewController: UIViewController {
         present(picker, animated: true, completion: nil)
     }
     
+    // CoreData의 영상 데이터(첫번째 Index)를 호출하는 메소드
     @objc func LoadVideoFile() {
         let array = DataManager.shared.fetchReturnData()
         var identifiers: [String] = []
@@ -112,10 +118,13 @@ class PHAssetTypeViewController: UIViewController {
             identifiers.append(item.videoName ?? "")
         }
         
+        // MARK: LocalIdentifier를 기반으로 불러온 PHAsset을 AVAsset으로 재생하기
         let assets = PHAsset.fetchAssets(withLocalIdentifiers: identifiers, options: .none)
         
         VideoFileManager.shared.playVideo(view: self, asset: assets[0])
     }
+    
+    // CoreData에 데이터를 저장하는 메소드
     @objc func saveVideo() {
         print("----------")
         for videoIdentifier in array {
@@ -126,6 +135,7 @@ class PHAssetTypeViewController: UIViewController {
         print("----------")
     }
     
+    // CoreData에서 데이터를 삭제하는 메소드
     @objc func removeAllData() {
         DataManager.shared.removeAllData()
         print("REMOVED ALL DATA")
@@ -135,6 +145,7 @@ class PHAssetTypeViewController: UIViewController {
 extension PHAssetTypeViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         
+        // MARK: PHAsset으로부터 LocalIdentifier를 들고오기
         guard let provider = results.first?.itemProvider else {return}
         
         let identifiers = results.compactMap(\.assetIdentifier)

@@ -11,6 +11,9 @@ import AVKit
 
 class VideoFileManager {
     
+    static let shared: VideoFileManager = VideoFileManager()
+    
+    // PHAsset의 ::URL::을 기반으로 영상을 Play하는 메소드
     func playVideo(view:UIViewController, asset:PHAsset) {
 
             guard (asset.mediaType == PHAssetMediaType.video)
@@ -35,9 +38,7 @@ class VideoFileManager {
         }
 
     
-    static let shared: VideoFileManager = VideoFileManager()
-    // Save Image
-    // name: ImageName
+    
     func saveVideo(url: URL, name: String,
                    onSuccess: @escaping ((Bool) -> Void)) {
         let video = NSData(contentsOf: url)
