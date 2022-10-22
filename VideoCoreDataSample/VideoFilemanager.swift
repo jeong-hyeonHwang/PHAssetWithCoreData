@@ -36,26 +36,4 @@ class VideoFileManager {
                 }
             }
         }
-
-    
-    
-    func saveVideo(url: URL, name: String,
-                   onSuccess: @escaping ((Bool) -> Void)) {
-        let video = NSData(contentsOf: url)
-        let targetDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                       in: .userDomainMask)[0]
-        let fileURL = targetDirectory.appendingPathComponent(name)
-        do {
-            // MARK: For Log Test
-            print(targetDirectory)
-            
-            try video?.write(to: fileURL)
-            
-            // MARK: For Log Test
-            let contentUrls = try FileManager.default.contentsOfDirectory(at: .documentsDirectory, includingPropertiesForKeys: nil)
-            print(contentUrls)
-        } catch let error as NSError {
-            print("Failed to Save Video: \(error), \(error.userInfo)")
-        }
-    }
 }
