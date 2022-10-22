@@ -1,0 +1,2 @@
+# PHAssetWithCoreData
+PHAsset + CoreData
