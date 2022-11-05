@@ -1,5 +1,5 @@
-# PhotosUI + AVKit + CoreData
-**팀 8BIT의 클라이밍 영상 분류 앱 [오르락(ORRROCK)](https://github.com/DeveloperAcademy-POSTECH/MacC-TEAM-8bit)의 기능의 기술 검증을 위한 예시 프로젝트입니다.**
+# PhotosUI + AVKit + CoreData Sample Project
+### 팀 8BIT의 클라이밍 영상 분류 앱 [오르락(ORRROCK)](https://github.com/DeveloperAcademy-POSTECH/MacC-TEAM-8bit)의 기능의 기술 검증을 위한 예시 프로젝트입니다.**
 
 ### 검증할 기술 & 결과 & 방법
 |검증 기술|결과|방법|
