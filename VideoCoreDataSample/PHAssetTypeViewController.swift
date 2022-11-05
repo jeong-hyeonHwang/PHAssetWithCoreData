@@ -22,7 +22,7 @@ class PHAssetTypeViewController: UIViewController {
     // CoreData의 영상 데이터(첫번째 Index)를 호출하는 메소드
     lazy var playVideoButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Play Video Butotn", for: .normal)
+        button.setTitle("Play Video Button", for: .normal)
         return button
     }()
     
