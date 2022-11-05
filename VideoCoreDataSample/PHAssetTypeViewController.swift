@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import PhotosUI
 import AVKit
-import CoreVideo
 
 class PHAssetTypeViewController: UIViewController {
     
@@ -158,7 +157,7 @@ extension PHAssetTypeViewController: PHPickerViewControllerDelegate {
         print("FETCHED FOR ", fetchResult.count)
         provider.loadFileRepresentation(forTypeIdentifier: "public.movie") { url, error in
             guard error == nil else {
-                print(error)
+                print(error as Any)
                 return
             }
         }
